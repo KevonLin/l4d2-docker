@@ -5,6 +5,10 @@
 This repository can be used to build docker images for both Left 4 Dead and Left 4 Dead 2. You can use this repository
 to build these images yourself, or pull them from our registry on [Docker Hub](https://hub.docker.com/u/left4devops).
 
+## Quick Start
+
+Use compose file: [docker-compose.yml](docker-compose.yml) 
+
 ## Getting Started
 
 Running a vanilla server can as simple as running:
