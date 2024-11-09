@@ -1,4 +1,16 @@
+name: l4d2server
 services:
-  l4d2:
-    image: left4devops/l4d2
+  l4d2-1:
+    image: kevonlin/l4d2
     network_mode: host
+    restart: always
+    container_name: l4d2vs-1
+    environment:
+      - PORT=27015
+      - DEFAULT_MAP=c2m1_highway
+      - EXTRA_ARGS="-tickrate 100"
+    volumes:
+      - l4d2vs:/home/louis/l4d2/left4dead2
+      - /etc/localtime:/etc/localtime:ro
+volumes:
+  l4d2vs:

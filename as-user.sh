@@ -9,8 +9,6 @@ else
 fi
 
 mkdir -p ./"${GAME_DIR}"
-ln -s /addons "./${GAME_DIR}/addons"
-ln -s /cfg    "./${GAME_DIR}/cfg"
 
 # Install steamcmd
 mkdir -p .steam/sdk32/
