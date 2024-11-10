@@ -1,4 +1,4 @@
-FROM rockylinux/rockylinux:9-minimal AS base
+FROM ubuntu:latest AS base
 
 ADD as-root.sh .
 RUN ./as-root.sh
@@ -17,20 +17,14 @@ EXPOSE 27015/tcp 27015/udp
 ADD as-user.sh .
 RUN ./as-user.sh
 
-VOLUME ["/data"]
-
 ENV DEFAULT_MAP=$DEFAULT_MAP \
-    DEFAULT_MODE="coop" \
-    PORT=0 \
-    HOSTNAME="My Cool Server" \
-    REGION=255 \
+    PORT=27015 \
     GAME_ID=$GAME_ID \
     INSTALL_DIR=$INSTALL_DIR \
-    STEAM_GROUP=0
+    TICKRATE=100
 
-ADD tickrate_enabler.dll /$INSTALL_DIR/left4dead2/addons/tickrate_enabler.dll
-ADD tickrate_enabler.so /$INSTALL_DIR/left4dead2/addons/tickrate_enabler.so
-ADD tickrate_enabler.vdf /$INSTALL_DIR/left4dead2/addons/tickrate_enabler.vdf
+ADD install-plugins.sh .
+RUN ./install-plugins.sh
 
 ADD entrypoint.sh .
 ENTRYPOINT ["./entrypoint.sh"]

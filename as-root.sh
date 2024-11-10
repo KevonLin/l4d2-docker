@@ -1,13 +1,8 @@
 #!/bin/bash
-microdnf -y install SDL2.i686 \
-    libcurl.i686 \
-    glibc-langpack-en \
-    tar \
-    telnet
-microdnf -y update
-microdnf clean all
+dpkg --add-architecture i386
+apt-get -y update && apt-get -y upgrade
+apt-get -y install libc6:i386 lib32z1 curl
+useradd -m louis
 
-useradd louis
-
-mkdir /tmp/dumps
-chown louis:louis /tmp/dumps
+mkdir /tmp/dumps /maps
+chown louis:louis /tmp/dumps /maps

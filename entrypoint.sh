@@ -15,8 +15,7 @@ else
         STARTUP+=("-autoupdate -steam_dir $HOME -steamcmd_script $HOME/update.txt")
     fi
     
-    STARTUP+=("+sv_logecho 1")
-    STARTUP+=("-game left4dead2 -ip $IP -port $PORT $EXTRA_ARGS +map $DEFAULT_MAP +exec server.cfg")
+    STARTUP+=("-game left4dead2 -ip $IP -port $PORT -tickrate $TICKRATE +map $DEFAULT_MAP +exec server.cfg")
 
     ${STARTUP[*]}
 fi
